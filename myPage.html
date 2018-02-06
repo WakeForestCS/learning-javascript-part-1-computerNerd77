@@ -1,0 +1,131 @@
+<!DOCTYPE html> 
+<html lang = "en"> 
+
+<head> 
+	<title>My Page </title> 
+	<link rel="stylesheet" type="text/css" href="./button.css">
+	<style> 
+		body{
+		  padding: 20px;
+		  width: 500px; 
+		}
+		button {
+		  margin-top: 20px;
+		  line-height: 60px;
+		  font-weight: bold;
+		  padding: 0 40px;
+		  background: salmon;
+		  border: none;
+		}
+		button:hover {
+		  background: lightsalmon;
+		}
+	</style> 
+</head> 
+
+<h1>Computer Science: Software Engineering</h1>
+<nav> 
+	<ul> 
+		<li><a href = "#start">Getting started</a></li> 
+		<li><a href = "#eventDriven"> What is Event-driven programming </a> </li> 
+		<li><a href = "#firstclassfunctions"> Functions are first class citizens/objects</a></li>
+		<li><a href = "#scope">Scope</a> </li>
+		<li><a href = "#callback">Callback Functions </a> </li>
+		<li><a href = "getIt">Basicas of web application via Express</a>  </li>
+	</ul> 
+</nav> 
+
+<div id="start"> 
+	<h2>Getting started </h2>
+	<p> Is this page working?</p>  
+	<p id ="working"> this is a text</p> 
+</div> 
+
+<div id = "eventDriven"> 
+	<h2> What is Event-driven programming </h2> 
+	<p> This is part of javascript where if something happens, then you can execute something else. Events can be from the user such as a click on the page or from background processes like if the server gets a package and wants to tell the user the package is here.</p> 
+	<p>Here is an example based on the user clicking the button</p> 
+	<button onclick="buttonClick(updateClick)"> 
+		Do something 
+	</button> 
+
+	</div> 
+
+<div id = "firstclassfunctions"> 
+	<h2>Functions are first class citizens/objects </h2> 
+	<p>In Javascript, something really cool that happens is functions can be used like variables. So, just like any other variable, can be passed as a parameter to another function and can return the function from a function. One way this can be done, as stated later, is through callback functions.  </p> 
+	<button onclick="buttonClick(boo)"> 
+		spooky button 
+	</button> 
+</div> 
+
+<div id = "scope"> 
+	<h2>Scope</h2> 
+	<p>Scope is actually common in computer science, just now with Javascript, there is a specific word for it. Scope relates to the accessibiltiy of variables. Just like in C, declaring a variable in a function only makes it valid for that function. This is true for Javascript, and using this example, would be considered a local scope: only access in the function. The other type of scope is global scope, declared outside of a function so that anyone can access it. </p> 
+</div>
+
+<div id = "callback"> 
+	<h2>Callback Functions  </h2> 
+	<p>This relates back to using functions as first class objects. Because of this, it opens up new doors. One of my callback function for this page relates to counting how many times you have clicked the do something button. </p> 
+	<!--p>How many times do you think you have pressed it?</p--> 
+	<p>You can check this number on the Javascript console through typing window.count.</p> 
+</div> 
+
+<div id = "getIt"> 
+	<h2>Basics of web application via Express</h2> 
+	<p> Thus far, we've only talked about client side code, but this method resolves talking to the server. This I will focus on the GET request; this allows the user to grab the client side code on their browser. This is what the internet is for most users: a series of GET request to grab code and display that on their browser. </p> 
+	<p>It is possible to grab this code from a personal computer if the server is running but usually due to the conflict of different IP addresses, a simple GET request does not allow for that. This is most likely due to security reasons, which is great in general but prevents the ability to show off. </p> 
+	<p> <b>This is my .js code </b> </p> 
+	<p>const express = require('express');  </p> 
+	<p>const app = express();  </p> 
+	<br /> 
+	<p>app.listen(3000, function(){ </p> 
+	<p>	console.log('listening on 3000') </p> 
+	<p>}) </p> 
+	<br /> 
+	<p>app.get('/', (req, res)=>{ </p> 
+	<p>res.sendFile(__dirname + '/myPage.html')</p> 
+	<p>})  </p> 
+	<p> </p> 
+	</div> 
+
+<div> 
+	<nav> 
+<a href = "http://csweb.cs.wfu.edu/~pauca/Welcome.html">My Teacher </a> 
+<a href = "./playPage.html">Play Page </a> 
+	</nav> 
+</div> 
+
+<script> 
+var button; 
+button = document.createElement("button"); 
+
+var count = 0; //how many times the button was clicked 
+var updateClick = function(){
+	count = count + 1; 
+	//if(count == 3)
+		//boo(); 
+}
+function buttonClick(callback){
+	if(callback == updateClick)
+		alert("button was clicked"); 
+	callback(); 
+}
+
+function spooky(){
+	var ghost = "fresh"; 
+	if(confirm("Did this spook you? ")){
+		console.log("example of functions as first-class "); 
+	}
+	else{
+		return ghost
+	}
+}
+var boo = spooky; 
+
+var working = document.getElementById("working"); 
+working.innerHTML = "<p> YES </p>"; 
+//to run the server: npm run dev 
+</script> 
+
+</html> 
